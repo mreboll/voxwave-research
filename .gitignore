@@ -1,0 +1,27 @@
+# Datasets: never committed (licences forbid redistribution). Only the READMEs.
+data/*
+!data/README.md
+data_external/*
+!data_external/README.md
+
+# Python
+ml/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Derived from NeuroVoz (data use agreement: no redistribution of derivatives)
+ml/features/
+ml/models/
+ml/folds.csv
+ml/results/scores/
+ml/results/demo/
+ml/export/patient_*.csv
+ml/export/timeline_90d*
+
+# Build and local files
+paper/_build.html
+.claude/
+*.log
+.DS_Store
+Thumbs.db

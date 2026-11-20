@@ -1,0 +1,7 @@
+dial_id,name_es,name_en,hc_median_z,pd_median_z,d_pd_vs_hc_age_sex_adjusted,rho_updrs_partial,session_reliability,mdc95_between_person_sd,tracking_weight
+F0semitoneFrom27.5Hz_sma3nz_stddevNorm,Variación de entonación,Pitch variation,0.135,-0.314,-0.459,-0.17,0.953,0.599,1.0
+loudnessPeaksPerSec,Ritmo silábico,Syllable rate,-0.226,0.34,0.773,0.167,0.853,1.061,0.7
+MeanVoicedSegmentLengthSec,Duración de tramos sonoros,Voiced segment length,-0.32,0.204,0.852,0.266,0.892,0.912,0.7
+HNRdBACF_sma3nz_amean,Claridad (HNR),Voice clarity (HNR),-0.29,0.104,0.46,0.137,0.987,0.318,0.3
+MeanUnvoicedSegmentLength,Duración de pausas,Pause length,0.194,-0.276,-0.954,-0.181,0.767,1.337,0.7
+F0semitoneFrom27.5Hz_sma3nz_pctlrange0-2,Rango tonal,Pitch range,0.01,-0.277,-0.257,-0.219,0.951,0.614,1.0

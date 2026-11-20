@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Channel-robust speech biomarkers for between-visit monitoring of Parkinson's disease (VoxWave)"
+type: software
+authors:
+  - family-names: "Reboll Gómez"
+    given-names: "Martín"
+    affiliation: "Universidad Complutense de Madrid"
+  - family-names: "de Paz Figueras"
+    given-names: "Javier"
+    affiliation: "Universidad Complutense de Madrid"
+  - family-names: "García López"
+    given-names: "Marco"
+    affiliation: "Universidad Complutense de Madrid"
+  - family-names: "Verdú García"
+    given-names: "Victor"
+    affiliation: "Universidad Complutense de Madrid"
+date-released: "2026-11-20"
+license: MIT
+keywords:
+  - parkinson
+  - speech
+  - wavlm
+  - neurovoz
+  - digital biomarkers

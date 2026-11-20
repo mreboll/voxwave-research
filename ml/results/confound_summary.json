@@ -1,0 +1,81 @@
+{
+  "channel_only": {
+    "auroc": 0.7825174825174824,
+    "ci": [
+      0.6903315680451023,
+      0.8646893302775654
+    ],
+    "auroc_age_matched": 0.7392102846648302,
+    "auroc_shared_window": 0.23428571428571424,
+    "shared_window_ci": [
+      0.02285714285714286,
+      0.5037789351851851
+    ],
+    "n_window_pd": 7,
+    "n_window_hc": 25
+  },
+  "egemaps_all": {
+    "auroc": 0.8902097902097902,
+    "ci": [
+      0.8241197421981004,
+      0.9473916338160044
+    ],
+    "auroc_age_matched": 0.8393021120293848,
+    "auroc_shared_window": 0.8685714285714285,
+    "shared_window_ci": [
+      0.5939570393374742,
+      1.0
+    ],
+    "n_window_pd": 7,
+    "n_window_hc": 25,
+    "p_increment_over_channel": 9.567682469277652e-09
+  },
+  "egemaps_robust": {
+    "auroc": 0.8758741258741258,
+    "ci": [
+      0.8079041720990874,
+      0.9324279977948626
+    ],
+    "auroc_age_matched": 0.7952249770431589,
+    "auroc_shared_window": 0.9485714285714285,
+    "shared_window_ci": [
+      0.8541666666666666,
+      1.0
+    ],
+    "n_window_pd": 7,
+    "n_window_hc": 25,
+    "p_increment_over_channel": 5.197663389818303e-08
+  },
+  "egemaps_all_resid": {
+    "auroc": 0.8381118881118882,
+    "ci": [
+      0.7561565597105611,
+      0.9098127136021872
+    ],
+    "auroc_age_matched": 0.8347107438016529,
+    "auroc_shared_window": 0.9714285714285715,
+    "shared_window_ci": [
+      0.88458751393534,
+      1.0
+    ],
+    "n_window_pd": 7,
+    "n_window_hc": 25,
+    "p_increment_over_channel": 1.2888232304793057e-08
+  },
+  "egemaps_robust_resid": {
+    "auroc": 0.7517482517482518,
+    "ci": [
+      0.656991475273495,
+      0.8423537372829825
+    ],
+    "auroc_age_matched": 0.707070707070707,
+    "auroc_shared_window": 0.9828571428571429,
+    "shared_window_ci": [
+      0.9310344827586208,
+      1.0
+    ],
+    "n_window_pd": 7,
+    "n_window_hc": 25,
+    "p_increment_over_channel": 3.81620811990017e-06
+  }
+}

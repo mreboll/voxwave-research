@@ -1,0 +1,13 @@
+{
+  "end_of_trial_spearman_drift_vs_dupdrs": [
+    -0.23053237176890043,
+    0.14188716891547073
+  ],
+  "n_worsened": 17,
+  "n_stable": 25,
+  "alert_rate_worsened": 0.11764705882352941,
+  "alert_rate_stable": 0.24,
+  "false_alert_rate_time_shuffled": 0.07523809523809524,
+  "median_alert_week_worsened": 9.0,
+  "median_r_drift_updrs_within_subject": -0.15861113229238002
+}

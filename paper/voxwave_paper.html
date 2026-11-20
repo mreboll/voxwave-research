@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VoxWave Speech Biomarker Study</title>
+<style>
+  /* Print layout for A4: serif body, sans headings and tables, numbered equations. */
+  :root {
+    --ink: #0d2230; --muted: #4a5d6a; --accent: #1f6f99; --rule: #c9d5dc; --tint: #eef4f7;
+    --body: "Cambria", "Georgia", serif; --sans: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    --mono: "Consolas", "Courier New", monospace;
+  }
+  @page { size: A4; margin: 22mm 20mm 22mm 20mm;
+    @bottom-center { content: counter(page); font-family: "Segoe UI", Arial, sans-serif; font-size: 8.5pt; color: #4a5d6a; } }
+  html { background: #fff; }
+  body { font-family: var(--body); font-size: 10.4pt; line-height: 1.45; color: var(--ink); margin: 0; }
+  h1, h2, h3, h4, .sans { font-family: var(--sans); }
+  h1 { font-size: 19pt; line-height: 1.2; margin: 0 0 8pt; font-weight: 700; letter-spacing: -0.2pt; }
+  h2.pb { margin-top: 0; }
+  h2 { font-size: 12.5pt; margin: 18pt 0 6pt; padding-top: 4pt; border-top: 1.2pt solid var(--ink); break-after: avoid; }
+  h3 { font-size: 10.8pt; margin: 12pt 0 4pt; break-after: avoid; }
+  h4 { font-size: 10pt; margin: 9pt 0 3pt; color: var(--accent); break-after: avoid; }
+  p { margin: 0 0 6pt; text-align: justify; hyphens: auto; }
+  ul, ol { margin: 0 0 6pt; padding-left: 16pt; }
+  li { margin-bottom: 2.5pt; }
+  .meta { font-family: var(--sans); font-size: 9pt; color: var(--muted); margin-bottom: 10pt; }
+  .meta b { color: var(--ink); }
+  .badge { display: inline-block; font-family: var(--sans); font-size: 7.5pt; letter-spacing: 0.6pt; text-transform: uppercase;
+    border: 0.8pt solid var(--accent); color: var(--accent); padding: 1pt 5pt; border-radius: 2pt; margin-bottom: 8pt; }
+  .abstract { background: var(--tint); border-left: 2.5pt solid var(--accent); padding: 8pt 11pt; margin: 6pt 0 10pt; }
+  .abstract p { margin-bottom: 4pt; font-size: 9.8pt; }
+  .abstract .lbl { font-family: var(--sans); font-weight: 700; font-size: 8.8pt; }
+  .keywords { font-family: var(--sans); font-size: 8.6pt; color: var(--muted); margin-bottom: 4pt; }
+  .eq { display: flex; align-items: center; margin: 6pt 0 8pt; break-inside: avoid; }
+  .eq .f { flex: 1; text-align: center; font-family: var(--body); font-size: 10.6pt; }
+  .eq .n { width: 32pt; text-align: right; font-family: var(--sans); font-size: 9pt; color: var(--muted); }
+  .f i, p i.v { font-style: italic; }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 2pt; }
+  .frac > span:first-child { border-bottom: 0.7pt solid var(--ink); padding: 0 2pt; }
+  .frac > span { line-height: 1.25; }
+  table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 8.4pt; margin: 4pt 0 4pt; break-inside: avoid; }
+  th, td { padding: 2.6pt 5pt; text-align: left; vertical-align: top; }
+  thead th { border-top: 1.1pt solid var(--ink); border-bottom: 0.7pt solid var(--ink); font-weight: 600; }
+  tbody tr:last-child td { border-bottom: 1.1pt solid var(--ink); }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.main td { font-weight: 700; background: var(--tint); }
+  tr.ctrl td { color: var(--muted); }
+  .tcap, figcaption { font-family: var(--sans); font-size: 8.4pt; color: var(--muted); line-height: 1.35; }
+  .tcap { margin: 10pt 0 2pt; break-after: avoid; }
+  .tcap b, figcaption b { color: var(--ink); }
+  .tnote { font-family: var(--sans); font-size: 7.8pt; color: var(--muted); margin: 0 0 10pt; }
+  figure { margin: 10pt 0 12pt; break-inside: avoid; }
+  figure img { width: 100%; display: block; border: 0.6pt solid var(--rule); }
+  figcaption { margin-top: 4pt; }
+  .box { border: 0.8pt solid var(--rule); padding: 7pt 10pt; margin: 8pt 0; break-inside: avoid; }
+  .box h4 { margin-top: 0; }
+  code { font-family: var(--mono); font-size: 8.8pt; }
+  .refs { font-size: 8.8pt; padding-left: 18pt; }
+  .refs li { margin-bottom: 3pt; text-align: left; }
+  .twocol { columns: 2; column-gap: 16pt; }
+  .pb { break-before: page; }
+  .toc-title { border-top: none; margin-top: 12pt; padding-top: 0; }
+  .toc { list-style: none; padding: 0; margin: 2pt 0 0; font-family: var(--sans); font-size: 9pt; }
+  .toc li { display: flex; align-items: baseline; gap: 4pt; margin: 0; }
+  .toc li.l2 { font-weight: 600; margin-top: 3.5pt; }
+  .toc li.l3 { padding-left: 14pt; color: var(--muted); font-size: 8.6pt; }
+  .toc .dots { flex: 1; border-bottom: 0.6pt dotted var(--rule); transform: translateY(-2.5pt); }
+  .toc .p { min-width: 14pt; text-align: right; font-variant-numeric: tabular-nums; }
+
+  .small { font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<div class="badge">Preprint · not peer reviewed · November 2026</div>
+<h1>Channel-robust speech biomarkers for between-visit monitoring of Parkinson's disease: confound control, cross-lingual validation and a personal-baseline tracking rule</h1>
+<div class="meta"><b>Martín Reboll Gómez, Javier de Paz Figueras, Marco García López, Victor Verdú García</b><br>
+Universidad Complutense de Madrid · VoxWave project · Creative Shock 2026<br>
+Correspondence: rebollmartin@gmail.com<br>
+Data: NeuroVoz (Spanish), MDVR-KCL (English), ItalianPVS (Italian), UCI Parkinson's Telemonitoring · All analyses reproducible from the project repository (<code>ml/</code>)</div>
+
+<div class="abstract">
+<p><span class="lbl">Background.</span> Speech changes are frequent and early in Parkinson's disease (PD), yet patients are assessed only at clinic visits spaced months apart. Clinical speech corpora also contain recording shortcuts (room, microphone, recording period) that inflate reported accuracy.</p>
+<p><span class="lbl">Methods.</span> On NeuroVoz (108 speakers, Spanish), we built a voice index from a frozen WavLM embedding with recording-channel descriptors removed inside each training fold. We evaluated it with speaker-level cross-validation, confound controls, external corpora in English and Italian, and designed a personal-baseline tracking rule.</p>
+<p><span class="lbl">Results.</span> Silence alone predicted diagnosis (AUROC 0.83). After channel correction the model reached AUROC 0.91 (95% CI 0.86&#8211;0.96), held after age matching, and its index followed motor severity beyond age (partial &rho; = 0.49). Without retraining it recognised PD in English recorded in a single room (0.79) and tracked clinician-rated speech impairment; trained without any Spanish it recognised PD in Spanish (0.83). Fine-tuned models scored higher but learned the room.</p>
+<p><span class="lbl">Conclusions.</span> Channel-corrected self-supervised speech features capture transferable markers of PD and its severity. Validating between-visit tracking now requires longitudinal home recordings, not larger models.</p>
+</div>
+
+<h2 class="toc-title">Contents</h2>
+<!--TOC-->
+
+<h2 id="1-introduction" class="pb">1. Introduction</h2>
+<p>Parkinson's disease (PD) affects between 7 and more than 10 million people worldwide. Up to 90% of patients develop hypokinetic dysarthria: reduced pitch and loudness variation, altered speech rate and pausing, and imprecise articulation. Speech changes can precede clear motor decline; in the WATCH-PD smartphone cohort, reading pitch range was already reduced in patients whose speech the neurologist rated as normal [23]. Clinical follow-up nevertheless relies on visits spaced by months, so wearing-off fluctuations, bad weeks and slow progression reach the clinic only as recollections. A short daily voice check on the patient's own phone could fill that gap if it measured disease-related change rather than noise.</p>
+<p>Two obstacles stand in the way. First, most public PD speech corpora are cross-sectional: each person is recorded once, so they support learning <i>which</i> voice features go with PD and with severity, not <i>how</i> a person's voice drifts. Second, clinical corpora often record patients and controls in different places or periods. Models can then learn the room or the microphone instead of the voice (a "Clever Hans" effect). Jouaiti and Ma recently showed that on NeuroVoz a classifier trained on the first second of audio performs close to one trained on full recordings [2], and an independent benchmark on the same 108 NeuroVoz speakers reported AUROC 0.77 for sentences and 0.75 for pa-ta-ka [6], well below many published figures.</p>
+<p>This study had five objectives:</p>
+<ol>
+  <li><b>Detection.</b> Build a speech model that separates PD from control voices with speaker-level validation.</li>
+  <li><b>Honesty.</b> Measure how much of that signal is recording channel or age, and remove it.</li>
+  <li><b>Severity and interpretable dials.</b> Test whether the model's index follows clinical severity (UPDRS, Hoehn &amp; Yahr) and identify interpretable voice parameters ("dials") suitable for daily monitoring.</li>
+  <li><b>External validity.</b> Test the model, without retraining, on corpora from other countries, languages and recording set-ups.</li>
+  <li><b>Tracking.</b> Design and calibrate a personal-baseline rule that flags sustained drift while ignoring day-to-day noise and medication cycles.</li>
+</ol>
+<p>The intended use is monitoring, not diagnosis: the system reports change relative to the person's own baseline and leaves clinical decisions to the neurologist.</p>
+
+<h2 id="2-data">2. Data</h2>
+<p class="tcap"><b>Table 1.</b> Corpora used in this study.</p>
+<table>
+<thead><tr><th>Corpus</th><th>Language</th><th>Speakers</th><th>Tasks used</th><th>Clinical labels</th><th>Role</th></tr></thead>
+<tbody>
+<tr><td>NeuroVoz [1]</td><td>Spanish</td><td>53 PD / 55 HC (108 with metadata)</td><td>16 read sentences, pa-ta-ka (1,794 recordings); vowels for comparison</td><td>UPDRS (n = 47), H&amp;Y (n = 52), age, sex</td><td>Development, cross-validation</td></tr>
+<tr><td>MDVR-KCL [8]</td><td>English</td><td>16 PD / 21 HC (reading); 15 / 19 (dialogue)</td><td>Read passage, spontaneous dialogue; Moto G4, one room, 26–29 Sep 2017</td><td>H&amp;Y, UPDRS II-5, UPDRS III-18 (speech)</td><td>External test, multi-corpus</td></tr>
+<tr><td>ItalianPVS [9]</td><td>Italian</td><td>28 PD / 22 elderly HC / 15 young HC</td><td>Reading passage, sentences, words, syllable repetition</td><td>Age, sex (no UPDRS/H&amp;Y in this release)</td><td>External test, age control</td></tr>
+<tr><td>UCI Telemonitoring [7]</td><td>English</td><td>42 PD</td><td>Sustained /a/, features only, ~weekly for 6 months</td><td>motor UPDRS (interpolated between 3 visits)</td><td>Longitudinal check</td></tr>
+</tbody>
+</table>
+<p class="tnote">NeuroVoz: six IDs with audio but no metadata were excluded. PD mean age 71.1 ± 10.7 y vs controls 64.0 ± 10.4 y; 50 of 53 patients recorded in ON medication; UPDRS 2–59 (mean 17.6); 39 of 52 patients in H&amp;Y stages 1–2. ItalianPVS: PD 67.2 ± 8.7 y, elderly controls 67.1 ± 5.2 y, young controls 20.8 ± 2.7 y; 10 PD were recorded at 44.1 kHz and all controls at 16 kHz. Licences: NeuroVoz CC BY-NC-ND 4.0; MDVR-KCL and ItalianPVS CC BY 4.0.</p>
+<p><b>The NeuroVoz recording confound.</b> Patients were recorded mostly between January and June 2016 and controls mainly in late 2016 and in 2018. Only November–December 2016 contains both groups (7 PD, 25 HC). This window removes the recording-period difference but not the age difference: within it, age and sex alone separate the groups with AUROC 0.93, because the controls recorded then were younger. Both controls are therefore needed together (Section 3.1).</p>
+
+<h2 id="3-methods">3. Methods</h2>
+<h3 id="3-1-evaluation-protocol">3.1 Evaluation protocol</h3>
+<p>All NeuroVoz models use the same five speaker-level folds (stratified by group and age tercile, fixed seed), so no speaker is ever in training and test. Hyperparameters were fixed in advance and never tuned on test folds. Recording-level probabilities are averaged per speaker. Discrimination is the area under the ROC curve (AUROC) with a 95% percentile interval from 2,000 bootstrap resamples of speakers. Each model is also evaluated in:</p>
+<ul>
+  <li>an <b>age-matched subset</b>: greedy one-to-one matching of each patient to the nearest control within ±3 years, with a 0.5-year penalty for sex mismatch, without replacement;</li>
+  <li>the <b>shared recording window</b> (November–December 2016), which removes the period/room difference;</li>
+  <li>its <b>dependence on the channel</b>: the Spearman correlation between its speaker scores and those of a model trained on channel descriptors only.</li>
+</ul>
+<p>Whether a voice score adds information beyond the channel score is tested with a likelihood-ratio test between nested logistic models of diagnosis on logit(channel score) and on logit(channel score) + logit(voice score), with one degree of freedom.</p>
+
+<h3 id="3-2-acoustic-and-channel-descriptors">3.2 Acoustic and channel descriptors</h3>
+<p><b>eGeMAPS.</b> The 88 eGeMAPS v02 functionals [13] were extracted with openSMILE [14] per recording, plus recording duration.</p>
+<p><b>Channel descriptors.</b> To describe the room and microphone rather than the voice, each recording is cut into 25 ms frames with RMS level <i>L<sub>f</sub></i> (dB). We compute the noise floor <i>N</i> = P<sub>5</sub>(<i>L</i>), the peak <i>P</i> = P<sub>99</sub>(<i>L</i>), the signal-to-noise ratio <i>P</i> − <i>N</i>, and the spectral distribution of the quietest 10% of frames as the log share of energy in five bands (0–0.3, 0.3–1, 1–3, 3–8 and 8–16 kHz):</p>
+<div class="eq"><div class="f"><i>c<sub>b</sub></i> = 10 log<sub>10</sub> <span class="frac"><span>Σ<sub><i>f</i> ∈ quiet</sub> Σ<sub><i>k</i> ∈ <i>b</i></sub> |<i>X<sub>f</sub></i>(<i>k</i>)|<sup>2</sup></span><span>Σ<sub><i>f</i> ∈ quiet</sub> Σ<sub><i>k</i></sub> |<i>X<sub>f</sub></i>(<i>k</i>)|<sup>2</sup></span></span></div><div class="n">(1)</div></div>
+<p>This gives eight descriptors <i><b>c</b></i> per recording. <b>Silence-only</b> features are eGeMAPS computed on the concatenation of frames with <i>L<sub>f</sub></i> ≤ min(max <i>L</i> − 35 dB, P<sub>30</sub>(<i>L</i>)) when they total at least 0.3 s.</p>
+
+<h3 id="3-3-self-supervised-representations">3.3 Self-supervised representations</h3>
+<p>Audio is resampled to 16 kHz and passed through a frozen encoder (WavLM Base+ [10] as the main model; WavLM Large, Whisper large-v3 [12] encoder and HuBERT [11] in comparisons). With hidden states <i><b>h</b></i><sub><i>l,t</i></sub> for layers <i>l</i> = 0…<i>L</i> and frames <i>t</i> = 1…<i>T</i>, the recording embedding is the time-pooled representation averaged over all layers, a choice fixed in advance:</p>
+<div class="eq"><div class="f"><i><b>e</b></i> = <span class="frac"><span>1</span><span><i>L</i> + 1</span></span> Σ<sub><i>l</i>=0</sub><sup><i>L</i></sup> <span class="frac"><span>1</span><span><i>T</i></span></span> Σ<sub><i>t</i>=1</sub><sup><i>T</i></sup> <i><b>h</b></i><sub><i>l,t</i></sub></div><div class="n">(2)</div></div>
+
+<h3 id="3-4-channel-residualization-and-classifi">3.4 Channel residualization and classifier</h3>
+<p>Standardizing a feature matrix does not remove a channel effect, because background noise is already integrated into each functional or embedding. We therefore remove, inside each training fold, the part of every feature that is linearly explained by the channel descriptors. With standardized features <i><b>X</b></i> and design matrix <i><b>C</b></i> = [<b>1</b>, <i><b>c</b></i>], the coefficients are fitted on training rows only and applied to both training and test rows:</p>
+<div class="eq"><div class="f"><i><b>β̂</b></i> = arg min<sub><i><b>β</b></i></sub> ‖<i><b>X</b></i><sub>train</sub> − <i><b>C</b></i><sub>train</sub><i><b>β</b></i>‖<sup>2</sup>,&nbsp;&nbsp;&nbsp; <i><b>X̃</b></i> = <i><b>X</b></i> − <i><b>C β̂</b></i></div><div class="n">(3)</div></div>
+<p>The residual features are re-standardized, reduced to 128 principal components (for embeddings) and passed to an L2-regularized logistic regression (C = 0.01 for embeddings, 0.1 for eGeMAPS). The VoxWave voice index is the predicted probability scaled to 0–100:</p>
+<div class="eq"><div class="f">index = 100 · σ(<i><b>w</b></i><sup>⊤</sup><i><b>z</b></i> + <i>b</i>),&nbsp;&nbsp;&nbsp; σ(<i>u</i>) = 1 / (1 + e<sup>−<i>u</i></sup>)</div><div class="n">(4)</div></div>
+<p>where <i><b>z</b></i> is the PCA projection of <i><b>X̃</b></i>. The speaker score is the mean over that speaker's recordings. XGBoost (300 trees, depth 3) was used as a non-linear baseline for eGeMAPS.</p>
+
+<h3 id="3-5-severity-effect-sizes-and-reliabilit">3.5 Severity, effect sizes and reliability of the dials</h3>
+<p><b>Partial Spearman correlation.</b> Severity associations inside PD are controlled for age and sex. Ranks of the score <i>x</i> and of the clinical scale <i>y</i> are regressed on [1, age, sex]; the Pearson correlation of the residuals is the partial ρ, tested with Student's t on <i>n</i> − 2 − <i>k</i> degrees of freedom (<i>k</i> = 2 covariates):</p>
+<div class="eq"><div class="f">ρ<sub>partial</sub> = corr(<i>r</i><sub>x</sub>, <i>r</i><sub>y</sub>),&nbsp;&nbsp;&nbsp; <i>t</i> = ρ <span class="frac"><span>√(<i>n</i> − 2 − <i>k</i>)</span><span>√(1 − ρ<sup>2</sup>)</span></span></div><div class="n">(5)</div></div>
+<p>p-values across the 89 features are corrected with the Benjamini–Hochberg procedure [18].</p>
+<p><b>Adjusted group difference.</b> For each feature standardized to unit variance, <i>d</i> is the coefficient of the PD indicator in the linear model <i>x</i> = β<sub>0</sub> + <i>d</i> · PD + β<sub>1</sub> age + β<sub>2</sub> sex.</p>
+<p><b>Within-session reliability.</b> With speaker means and pooled within-speaker variance across a speaker's recordings, the one-way intraclass correlation [20] and its Spearman–Brown extension to a session of <i>k</i> = 17 recordings are:</p>
+<div class="eq"><div class="f">ICC(1) = <span class="frac"><span>MS<sub>B</sub> − MS<sub>W</sub></span><span>MS<sub>B</sub> + (<i>k̄</i> − 1) MS<sub>W</sub></span></span>,&nbsp;&nbsp;&nbsp; <i>R<sub>k</sub></i> = <span class="frac"><span><i>k</i> · ICC</span><span>1 + (<i>k</i> − 1) ICC</span></span></div><div class="n">(6)</div></div>
+<p>The minimal detectable change at 95% confidence, in units of the between-speaker standard deviation, is</p>
+<div class="eq"><div class="f">MDC<sub>95</sub> = 1.96 · √2 · SD · √(1 − <i>R<sub>k</sub></i>)</div><div class="n">(7)</div></div>
+<p>The <b>channel sensitivity</b> of a dial is the <i>R</i><sup>2</sup> of a linear regression of the recording-level feature on the channel descriptors. Dials were selected with criteria fixed in advance: |<i>d</i>| ≥ 0.35, <i>R<sub>17</sub></i> ≥ 0.70, channel <i>R</i><sup>2</sup> ≤ 0.30, and a sign consistent with UPDRS. Features are z-scored within each sentence task before averaging, to remove sentence-content effects.</p>
+
+<h3 id="3-6-improvement-experiments">3.6 Improvement experiments</h3>
+<p><b>Supervised contrastive fine-tuning.</b> Following the recipe of Malekroodi et al. [4], WavLM Base+ and HuBERT Base were fine-tuned on GPU (Modal) within each training fold. The CNN feature encoder was frozen, 5 s random crops were used with batch size 32 and AdamW (learning rate 2·10<sup>−5</sup> for the encoder, 10<sup>−3</sup> for the heads, weight decay 0.01), with early stopping on an inner validation split by speaker. A projection head was trained with a supervised contrastive loss [15] on normalized projections <i><b>z</b></i>, temperature τ = 0.07 and negatives up-weighted by β = 1.5:</p>
+<div class="eq"><div class="f">ℒ<sub>SC</sub> = − <span class="frac"><span>1</span><span>|<i>P</i>(<i>i</i>)|</span></span> Σ<sub><i>p</i> ∈ <i>P</i>(<i>i</i>)</sub> log <span class="frac"><span>exp(<i><b>z</b><sub>i</sub></i>·<i><b>z</b><sub>p</sub></i>/τ)</span><span>Σ<sub><i>a</i> ∈ <i>P</i>(<i>i</i>)</sub> exp(<i><b>z</b><sub>i</sub></i>·<i><b>z</b><sub>a</sub></i>/τ) + β Σ<sub><i>n</i> ∈ <i>N</i>(<i>i</i>)</sub> exp(<i><b>z</b><sub>i</sub></i>·<i><b>z</b><sub>n</sub></i>/τ)</span></span></div><div class="n">(8)</div></div>
+<p>A classification head was trained with class-balanced cross-entropy on a stop-gradient copy of the pooled embedding.</p>
+<p><b>Signal enhancement.</b> Before feature extraction we applied a 60 Hz zero-phase high-pass filter, single-channel WPE dereverberation (10 taps, delay 3, 3 iterations), stationary spectral-gating noise reduction, gain normalization of the loud frames to −20 dBFS, and VAD trimming. The silence control was then repeated on the same time stretches that were silent in the original file.</p>
+<p><b>Other variants.</b> Larger encoders (WavLM Large, Whisper large-v3); layers recommended in the literature (WavLM Large layer 21; Whisper layers 17–20); fusion with six explicit descriptors (F0 mean and variation, loudness mean and variation, HNR, syllable rate); an ordinal severity target (HC = 0, PD = 1 + percentile rank of UPDRS) with ridge regression; and post-hoc channel residualization of fine-tuned logits.</p>
+<p><b>DA-DSQA.</b> A pre-trained dysarthria severity model [5] (Whisper large-v3 encoder plus a small probe; score 1–7, trained on English) was re-implemented from its published architecture and applied without retraining, with one Whisper window per speaker for concatenated sentences and one for pa-ta-ka.</p>
+
+<h3 id="3-7-external-validation-and-multi-corpus">3.7 External validation and multi-corpus training</h3>
+<p>Models trained on all NeuroVoz speakers were applied without retraining to 5 s windows containing at least 60% speech; the speaker score is the window mean. In ItalianPVS all audio was first resampled to 16 kHz so that both groups share the same bandwidth. Folder names in ItalianPVS contain real names; speakers were assigned anonymous identifiers and files were stripped of metadata before any processing. Inside each external corpus we also trained, with leave-one-speaker-out, a channel-only model (room control) and a WavLM model (in-domain ceiling).</p>
+<p>For multi-corpus training, every training window <i>i</i> of speaker <i>s</i> in corpus <i>c</i> received a weight that gives each corpus the same total weight and each speaker the same weight within its corpus. Young Italian controls were never used for training:</p>
+<div class="eq"><div class="f"><i>w<sub>i</sub></i> ∝ <span class="frac"><span>1</span><span><i>n<sub>s</sub></i> · <i>S<sub>c</sub></i></span></span>&nbsp;&nbsp;&nbsp; (<i>n<sub>s</sub></i>: windows of speaker <i>s</i>; <i>S<sub>c</sub></i>: training speakers in corpus <i>c</i>)</div><div class="n">(9)</div></div>
+<p>We report leave-one-corpus-out (train on two corpora, test on the third) and pooled 5-fold cross-validation by speaker.</p>
+
+<h3 id="3-8-personal-baseline-tracking-rule">3.8 Personal-baseline tracking rule</h3>
+<p>For each person, a session yields a voice index <i>v</i> (Eq. 4) and the dials. Sessions are valid if self-reported ON, without dyskinesia, and within 240 minutes of the last levodopa dose; acute ON/OFF effects on F0 and intensity have standardized mean differences of about 0.4–0.5 [27], the same order as a year of progression. The baseline uses the first 14 days (at least 8 valid days) of daily medians:</p>
+<div class="eq"><div class="f"><i>m</i> = median(<i>v</i><sub>1…14</sub>),&nbsp;&nbsp;&nbsp; <i>s</i> = 1.4826 · median|<i>v</i><sub>1…14</sub> − <i>m</i>|</div><div class="n">(10)</div></div>
+<p>After the baseline, weekly medians <i>V<sub>w</sub></i> of the daily values are converted to robust z-scores, and an alert is raised at the first week closing a run of three consecutive weeks above threshold with a non-negative Theil–Sen slope [19]:</p>
+<div class="eq"><div class="f"><i>z<sub>w</sub></i> = (<i>V<sub>w</sub></i> − <i>m</i>) / <i>s</i>;&nbsp;&nbsp;&nbsp; alert at <i>w</i> if <i>z</i><sub><i>w</i>−2</sub>, <i>z</i><sub><i>w</i>−1</sub>, <i>z<sub>w</sub></i> ≥ 1.5 and slope<sub>TS</sub>(<i>z</i><sub><i>w</i>−2…<i>w</i></sub>) ≥ 0</div><div class="n">(11)</div></div>
+<p>To report <i>which</i> parameters change, each dial <i>d</i> is expressed as a robust z against its own baseline, oriented by <i>o<sub>d</sub></i> ∈ {−1, +1} so that positive means "towards the clinical pattern", and combined with stability weights <i>ω<sub>d</sub></i> (1.0 for F0 variation and pitch range, 0.7 for rhythm and pauses, 0.3 for HNR):</p>
+<div class="eq"><div class="f"><i>D<sub>t</sub></i> = <span class="frac"><span>Σ<sub><i>d</i></sub> <i>ω<sub>d</sub></i> <i>o<sub>d</sub></i> <i>z<sub>d,t</sub></i></span><span>Σ<sub><i>d</i></sub> <i>ω<sub>d</sub></i></span></span></div><div class="n">(12)</div></div>
+<p><i>D<sub>t</sub></i> goes through the same alert rule, and the alert names the two dials with the largest recent oriented change. The thresholds (<i>z</i> ≥ 1.5, 3 weeks) were calibrated by simulation: 90 days, three recordings per day, 80% adherence, day-to-day AR(1) noise (φ = 0.5) plus recording noise, 300 simulations per setting.</p>
+<p><b>Longitudinal check.</b> On UCI Telemonitoring, features were log-transformed where skewed, expressed as robust z against each subject's first 28 days, and mapped to change in motor UPDRS by leave-one-subject-out ridge regression. Alerts were evaluated against worsening of at least 3 UPDRS points; the null distribution came from circular shifts of each subject's series, which keep autocorrelation but break alignment with time.</p>
+
+<h2 id="4-results">4. Results</h2>
+<h3 id="4-1-baseline-and-the-recording-shortcut">4.1 Baseline and the recording shortcut</h3>
+<p>A classic eGeMAPS logistic model reached AUROC 0.895 on sentences, 0.870 on pa-ta-ka and 0.892 on both. Sustained vowels were weaker (0.763; 0.628 age-matched), consistent with the external benchmark [6]. However, two models that never see the voice also separated the groups: silence-only (0.829) and channel-only (0.783). Inside the shared recording window the channel model fell to 0.234, while voice models kept separating. Voice added information beyond the channel score (likelihood-ratio p &lt; 10<sup>−8</sup> for every eGeMAPS variant).</p>
+
+<p class="tcap"><b>Table 2.</b> Discrimination on NeuroVoz (speaker-level 5-fold CV). AUROC with 95% bootstrap CI; age-matched subset; shared recording window (7 PD / 25 HC); Spearman ρ between the model's speaker scores and those of the channel-only model.</p>
+<table>
+<thead><tr><th>Model</th><th class="n">AUROC (95% CI)</th><th class="n">Age-matched</th><th class="n">Nov–Dec 2016</th><th class="n">ρ with channel</th></tr></thead>
+<tbody>
+<tr class="ctrl"><td>Age + sex only</td><td class="n">0.68 (0.57–0.78)</td><td class="n">0.48</td><td class="n">0.93</td><td class="n">0.16</td></tr>
+<tr class="ctrl"><td>Channel descriptors only</td><td class="n">0.78 (0.69–0.87)</td><td class="n">0.72</td><td class="n">0.23</td><td class="n">1</td></tr>
+<tr class="ctrl"><td>Silence only (eGeMAPS)</td><td class="n">0.83 (0.74–0.92)</td><td class="n">0.76</td><td class="n">0.53</td><td class="n">0.84</td></tr>
+<tr><td>eGeMAPS</td><td class="n">0.89 (0.82–0.95)</td><td class="n">0.82</td><td class="n">0.87</td><td class="n">0.77</td></tr>
+<tr><td>eGeMAPS, channel-corrected</td><td class="n">0.84 (0.76–0.91)</td><td class="n">0.83</td><td class="n">0.97</td><td class="n">0.26</td></tr>
+<tr><td>WavLM Base+, no correction</td><td class="n">0.96 (0.92–0.99)</td><td class="n">0.92</td><td class="n">0.98</td><td class="n">0.64</td></tr>
+<tr class="main"><td>WavLM Base+, channel-corrected (main)</td><td class="n">0.91 (0.86–0.96)</td><td class="n">0.89</td><td class="n">1.00</td><td class="n">0.22</td></tr>
+<tr><td>WavLM Large, channel-corrected</td><td class="n">0.95 (0.91–0.98)</td><td class="n">0.94</td><td class="n">1.00</td><td class="n">0.25</td></tr>
+<tr><td>Whisper large-v3, channel-corrected</td><td class="n">0.93 (0.88–0.97)</td><td class="n">0.92</td><td class="n">1.00</td><td class="n">0.19</td></tr>
+<tr><td>WavLM fine-tuned (SupCon)</td><td class="n">0.96 (0.93–0.99)</td><td class="n">0.94</td><td class="n">0.97</td><td class="n">0.59</td></tr>
+<tr><td>HuBERT fine-tuned (SupCon)</td><td class="n">0.94 (0.89–0.98)</td><td class="n">0.91</td><td class="n">0.94</td><td class="n">0.67</td></tr>
+<tr><td>DA-DSQA, sentences (zero-shot)</td><td class="n">0.83 (0.75–0.90)</td><td class="n">0.71</td><td class="n">0.81</td><td class="n">0.34</td></tr>
+</tbody>
+</table>
+<p class="tnote">The shared window removes the recording period but not age: there, age and sex alone reach 0.93. The silence model covers the 86 speakers with enough silence. Window AUROCs rest on 7 patients and have wide intervals.</p>
+
+<figure>
+<img src="figures/fig1_auroc_controls.png" alt="Bar charts of AUROC for all models in three panels: all speakers, age-matched subset, and the shared recording window.">
+<figcaption><b>Figure 1.</b> Discrimination of every model under the two confound controls. Channel correction lowers the headline AUROC of WavLM from 0.96 to 0.91, but the corrected model keeps separating the groups in the age-matched subset and in the shared recording window, and its score is the least room-dependent of the strong models.</figcaption>
+</figure>
+
+<h3 id="4-2-main-model-discrimination-and-severi">4.2 Main model: discrimination and severity</h3>
+<p>The channel-corrected WavLM Base+ model was declared the main model before external testing. It separates PD from controls with AUROC 0.91 (0.86–0.96), keeps 0.89 in the age-matched subset (where age alone gives 0.48), and its score correlates only 0.22 with the channel-only score, against 0.64 without correction.</p>
+<p>Within PD, the index follows motor severity beyond age and sex (Table 3, Figure 2). No model followed Hoehn &amp; Yahr: 39 of 52 patients are in stages 1–2, which leaves little variance to explain.</p>
+
+<p class="tcap"><b>Table 3.</b> Association of speaker scores with clinical severity inside PD (Spearman ρ; partial on age and sex).</p>
+<table>
+<thead><tr><th>Score</th><th class="n">ρ UPDRS</th><th class="n">Partial ρ UPDRS (p)</th><th class="n">Partial ρ H&amp;Y</th></tr></thead>
+<tbody>
+<tr class="main"><td>WavLM Base+, channel-corrected (main)</td><td class="n">0.61</td><td class="n">0.49 (0.0008)</td><td class="n">0.07</td></tr>
+<tr><td>WavLM Base+, no correction</td><td class="n">0.48</td><td class="n">0.38 (0.011)</td><td class="n">−0.11</td></tr>
+<tr><td>WavLM Large, channel-corrected</td><td class="n">–</td><td class="n">0.41 (0.006)</td><td class="n">−0.11</td></tr>
+<tr><td>Whisper large-v3, channel-corrected</td><td class="n">–</td><td class="n">0.31 (0.040)</td><td class="n">−0.10</td></tr>
+<tr><td>eGeMAPS, channel-corrected</td><td class="n">0.38</td><td class="n">0.29 (0.054)</td><td class="n">0.08</td></tr>
+<tr><td>eGeMAPS, no correction</td><td class="n">0.11</td><td class="n">0.11 (n.s.)</td><td class="n">–</td></tr>
+<tr><td>Ridge regression eGeMAPS → UPDRS</td><td class="n">0.32</td><td class="n">–</td><td class="n">–</td></tr>
+<tr><td>DA-DSQA, sentences</td><td class="n">0.31</td><td class="n">0.08 (n.s.)</td><td class="n">−0.02</td></tr>
+<tr><td>DA-DSQA, pa-ta-ka</td><td class="n">0.34</td><td class="n">0.33 (0.037)</td><td class="n">−0.06</td></tr>
+<tr class="ctrl"><td>Age alone</td><td class="n">0.45</td><td class="n">–</td><td class="n">–</td></tr>
+</tbody>
+</table>
+<p class="tnote">n = 46 patients with UPDRS and age (51 with H&amp;Y). Channel correction is what makes the eGeMAPS score follow severity (0.11 → 0.29).</p>
+
+<figure>
+<img src="figures/fig2_index_vs_updrs.png" alt="Scatter plot of the voice index against UPDRS for 46 patients with a regression line.">
+<figcaption><b>Figure 2.</b> Out-of-fold voice index of the main model against UPDRS in 46 NeuroVoz patients.</figcaption>
+</figure>
+
+<h3 id="4-3-interpretable-voice-dials">4.3 Interpretable voice dials</h3>
+<p>Thirteen of 89 eGeMAPS features met all dial criteria. The most interpretable are in Table 4 and Figure 3. Patients showed flatter intonation and, unexpectedly, faster speech with shorter pauses: sentences lasted 2.36 s versus 2.75 s when measured on the active speech span only, so this is not a trimming artefact. This is compatible with the festination-like rate acceleration of hypokinetic dysarthria, but may also reflect the age difference. No single feature survived FDR correction against UPDRS: the dials describe the PD–control difference, while severity is followed better by the multivariate index.</p>
+
+<p class="tcap"><b>Table 4.</b> Dials exposed by the system. <i>d</i>: age- and sex-adjusted PD–control difference (SD units); partial ρ with UPDRS inside PD; session reliability <i>R</i><sub>17</sub>; MDC<sub>95</sub> of one session in between-speaker SD; tracking weight ω.</p>
+<table>
+<thead><tr><th>Dial (eGeMAPS feature)</th><th class="n"><i>d</i></th><th class="n">Partial ρ UPDRS</th><th class="n"><i>R</i><sub>17</sub></th><th class="n">MDC<sub>95</sub></th><th class="n">ω</th></tr></thead>
+<tbody>
+<tr><td>Pause length (MeanUnvoicedSegmentLength)</td><td class="n">−0.95</td><td class="n">−0.18</td><td class="n">0.77</td><td class="n">1.34</td><td class="n">0.7</td></tr>
+<tr><td>Voiced segment length (MeanVoicedSegmentLengthSec)</td><td class="n">+0.85</td><td class="n">0.27</td><td class="n">0.89</td><td class="n">0.91</td><td class="n">0.7</td></tr>
+<tr><td>Syllable rate (loudnessPeaksPerSec)</td><td class="n">+0.77</td><td class="n">0.17</td><td class="n">0.85</td><td class="n">1.06</td><td class="n">0.7</td></tr>
+<tr><td>Pitch variation (F0 semitone stddevNorm)</td><td class="n">−0.46</td><td class="n">−0.17</td><td class="n">0.95</td><td class="n">0.60</td><td class="n">1.0</td></tr>
+<tr><td>Voice clarity (HNR mean)</td><td class="n">+0.46</td><td class="n">0.14</td><td class="n">0.99</td><td class="n">0.32</td><td class="n">0.3</td></tr>
+<tr><td>Pitch range (F0 semitone pctlrange)</td><td class="n">−0.26</td><td class="n">−0.22</td><td class="n">0.95</td><td class="n">0.61</td><td class="n">1.0</td></tr>
+</tbody>
+</table>
+<p class="tnote">Pitch range was added on literature grounds (WATCH-PD [23]) despite a small effect in short NeuroVoz sentences. Reliability is within one session: NeuroVoz has no repeated days, and smartphone test–retest ICCs across days are lower (0.26–0.33 in mPower [25]). For rhythm and pause dials, the MDC of a single session exceeds the whole PD–control difference, so dials are only interpretable aggregated over weeks.</p>
+
+<figure>
+<img src="figures/fig3_dials.png" alt="Dot plot of group medians for six voice dials, controls versus Parkinson's disease.">
+<figcaption><b>Figure 3.</b> Group medians of the six voice dials (z within task), with age- and sex-adjusted effect sizes.</figcaption>
+</figure>
+
+<h3 id="4-4-what-did-and-did-not-improve-the-mod">4.4 What did and did not improve the model</h3>
+<p class="tcap"><b>Table 5.</b> Improvement experiments, all channel-corrected unless stated. The reference is the main model (first row).</p>
+<table>
+<thead><tr><th>Variant</th><th class="n">AUROC</th><th class="n">Age-matched</th><th class="n">Partial ρ UPDRS</th><th class="n">ρ with channel</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr class="main"><td>WavLM Base+, layer mean (main)</td><td class="n">0.91</td><td class="n">0.89</td><td class="n">0.49</td><td class="n">0.22</td><td>Reference</td></tr>
+<tr><td>WavLM Large, layer mean</td><td class="n">0.95</td><td class="n">0.94</td><td class="n">0.41</td><td class="n">0.25</td><td>Better detection, same room dependence</td></tr>
+<tr><td>WavLM Large, layer 21</td><td class="n">0.94</td><td class="n">0.93</td><td class="n">0.44</td><td class="n">0.25</td><td>No gain over layer mean</td></tr>
+<tr><td>Whisper large-v3, layer mean</td><td class="n">0.93</td><td class="n">0.92</td><td class="n">0.31</td><td class="n">0.19</td><td>Weaker severity</td></tr>
+<tr><td>Whisper large-v3, layers 17–20</td><td class="n">0.91</td><td class="n">0.91</td><td class="n">0.33</td><td class="n">0.12</td><td>Least room-dependent</td></tr>
+<tr><td>Whisper large-v3, layer 32</td><td class="n">0.89</td><td class="n">0.87</td><td class="n">0.39</td><td class="n">0.12</td><td>–</td></tr>
+<tr><td>WavLM Base+ + 6 explicit descriptors</td><td class="n">0.92</td><td class="n">0.89</td><td class="n">0.45</td><td class="n">0.23</td><td>No gain</td></tr>
+<tr><td>Fusion WavLM + eGeMAPS</td><td class="n">0.91</td><td class="n">0.90</td><td class="n">0.44</td><td class="n">0.23</td><td>No gain</td></tr>
+<tr><td>Ordinal severity target</td><td class="n">0.92</td><td class="n">0.89</td><td class="n">0.44</td><td class="n">0.21</td><td>No gain (46 labelled PD)</td></tr>
+<tr><td>Ridge on UPDRS, PD only</td><td class="n">–</td><td class="n">–</td><td class="n">0.13</td><td class="n">0.11</td><td>Too little data</td></tr>
+<tr><td>WavLM fine-tuned, no correction</td><td class="n">0.96</td><td class="n">0.94</td><td class="n">0.44</td><td class="n">0.59</td><td>Learns the room</td></tr>
+<tr><td>WavLM fine-tuned, logits channel-corrected</td><td class="n">0.67</td><td class="n">0.70</td><td class="n">0.27</td><td class="n">−0.19</td><td>Most of the gain was room</td></tr>
+</tbody>
+</table>
+<p class="tnote">Seven pre-declared variants were compared; differences of ±0.02 AUROC are within the overlapping confidence intervals.</p>
+
+<p><b>Signal enhancement did not remove the shortcut</b> (Table 6). On the same stretches that were silent in the original files, the cleaned audio still predicted diagnosis (0.80), and channel descriptors of cleaned audio separated groups even inside the shared window (0.72). Gain normalization rescales the residual noise by each speaker's speech level, so the "silence" of cleaned audio carries voice information (hypophonia), while the enhancer leaves room-specific residues. The first-second control proposed in [2] is not a room control on NeuroVoz: files start with only 0.03–0.04 s of silence, so the first second is speech (0.87 raw, 0.94 cleaned).</p>
+
+<p class="tcap"><b>Table 6.</b> Effect of signal enhancement (eGeMAPS + logistic regression unless stated).</p>
+<table>
+<thead><tr><th>Input</th><th class="n">AUROC</th><th class="n">Nov–Dec 2016</th></tr></thead>
+<tbody>
+<tr><td>Speech, original / cleaned</td><td class="n">0.89 / 0.90</td><td class="n">0.86 / 0.91</td></tr>
+<tr><td>Silence, original</td><td class="n">0.83</td><td class="n">0.53</td></tr>
+<tr><td>Same silent stretches, after cleaning</td><td class="n">0.80</td><td class="n">0.80</td></tr>
+<tr><td>Channel descriptors, original / cleaned</td><td class="n">0.78 / 0.84</td><td class="n">0.23 / 0.72</td></tr>
+<tr><td>WavLM, original / cleaned</td><td class="n">0.96 / 0.95</td><td class="n">0.98 / 1.00</td></tr>
+</tbody>
+</table>
+
+<h3 id="4-5-external-validation-without-retraini">4.5 External validation without retraining</h3>
+<p class="tcap"><b>Table 7.</b> Models trained only on NeuroVoz, applied to MDVR-KCL and ItalianPVS. Grey rows are trained inside each corpus with leave-one-speaker-out.</p>
+<table>
+<thead><tr><th>Model</th><th class="n">MDVR reading</th><th class="n">MDVR dialogue</th><th class="n">ρ UPDRS III-18 in PD (reading / dialogue)</th><th class="n">ItalianPVS PD vs elderly</th><th class="n">Italian elderly vs young</th></tr></thead>
+<tbody>
+<tr class="main"><td>WavLM Base+, channel-corrected (main)</td><td class="n">0.79 (0.64–0.92)</td><td class="n">0.74 (0.56–0.90)</td><td class="n">0.53* / 0.66**</td><td class="n">0.93</td><td class="n">0.34</td></tr>
+<tr><td>WavLM Large, channel-corrected</td><td class="n">0.83 (0.69–0.95)</td><td class="n">0.75</td><td class="n">0.64** / 0.71**</td><td class="n">0.91</td><td class="n">0.25</td></tr>
+<tr><td>WavLM Base+, no correction</td><td class="n">0.77</td><td class="n">0.70</td><td class="n">0.53* / 0.36</td><td class="n">0.76</td><td class="n">0.99</td></tr>
+<tr><td>eGeMAPS, channel-corrected</td><td class="n">0.69</td><td class="n">0.75</td><td class="n">0.14 / 0.10</td><td class="n">0.57</td><td class="n">0.69</td></tr>
+<tr class="ctrl"><td>Channel only, in-corpus</td><td class="n">0.09</td><td class="n">0.17</td><td class="n">–</td><td class="n">0.90</td><td class="n">1.00</td></tr>
+<tr class="ctrl"><td>WavLM, in-corpus (ceiling)</td><td class="n">0.92</td><td class="n">0.92</td><td class="n">–</td><td class="n">0.97</td><td class="n">1.00</td></tr>
+</tbody>
+</table>
+<p class="tnote">* p &lt; 0.05, ** p &lt; 0.01. MDVR-KCL: 16 PD / 21 HC (reading), 15 / 19 (dialogue). ItalianPVS: 28 PD / 22 elderly / 15 young controls; PD vs elderly with only the 18 patients recorded at 16 kHz: main 0.96. Channel-only values below 0.5 in MDVR are the known downward bias of leave-one-out AUROC when there is no signal.</p>
+<p><b>MDVR-KCL is the clean test.</b> All speakers were recorded with the same phone in the same room within four days, and an in-corpus channel model has no signal. There, the main model trained only on Spanish recognised PD in English reading (0.79) and dialogue (0.74), and its index correlated with the clinician's rating of speech impairment inside the patient group (ρ = 0.53–0.66).</p>
+<p><b>ItalianPVS supports but does not prove.</b> The main model reached 0.93 against age-matched controls and did not separate elderly from young controls (0.34), whereas the uncorrected WavLM did (0.99), confirming that channel correction removes an age/recording shortcut that otherwise transfers. However, an in-corpus channel model separates Italian patients from controls (0.90; 0.99 with the 16 kHz patients only). The main score adds strongly beyond that channel score in the full sample (p = 3·10<sup>−7</sup>; ρ with channel 0.38) and only marginally in the 16 kHz subset (p = 0.036; ρ 0.77).</p>
+
+<figure>
+<img src="figures/fig5_external_validation.png" alt="Bar charts of external validation AUROCs on MDVR-KCL reading, dialogue and ItalianPVS.">
+<figcaption><b>Figure 4.</b> External validation without retraining. The main model was fixed before these tests; WavLM Large, slightly better in London and slightly worse in Italy, is kept as a documented alternative to avoid selecting on the test sets.</figcaption>
+</figure>
+
+<h3 id="4-6-multi-corpus-training">4.6 Multi-corpus training</h3>
+<p class="tcap"><b>Table 8.</b> Training on several corpora (WavLM Base+, channel-corrected).</p>
+<table>
+<thead><tr><th>Test corpus</th><th>Trained on</th><th class="n">AUROC (95% CI)</th><th class="n">Severity</th><th class="n">Italian elderly vs young</th></tr></thead>
+<tbody>
+<tr><td>MDVR-KCL (reading + dialogue windows)</td><td>NeuroVoz + ItalianPVS</td><td class="n">0.82 (0.67–0.94)</td><td class="n">ρ III-18 in PD 0.57 (p = 0.02)</td><td class="n">–</td></tr>
+<tr><td>ItalianPVS, PD vs elderly</td><td>NeuroVoz + MDVR-KCL</td><td class="n">0.93 (0.84–0.99)</td><td class="n">–</td><td class="n">0.81</td></tr>
+<tr class="main"><td>NeuroVoz</td><td>MDVR-KCL + ItalianPVS</td><td class="n">0.83 (0.75–0.90)</td><td class="n">partial ρ UPDRS 0.43 (p = 0.004)</td><td class="n">–</td></tr>
+<tr><td>Pooled 5-fold, all three</td><td>All three</td><td class="n">NV 0.94 · MDVR 0.95 · IT 0.93</td><td class="n">partial ρ UPDRS 0.49</td><td class="n">0.81</td></tr>
+</tbody>
+</table>
+<p>Without hearing any Spanish speaker, the pipeline recognised PD in NeuroVoz (0.83) and followed its UPDRS beyond age, so the marker transfers across three languages in both directions. Adding diversity modestly improved transfer to London (0.79 → 0.82). However, models trained with MDVR-KCL separated Italian elderly from young controls (0.81). MDVR-KCL does not publish participant ages, and its controls are probably younger than its patients. The multi-corpus model is therefore reported as evidence of generalization but not adopted for deployment until age can be controlled in every corpus (with WavLM Large the age effect did not appear: 0.44).</p>
+
+<h3 id="4-7-da-dsqa-as-an-independent-reference">4.7 DA-DSQA as an independent reference</h3>
+<p>Applied zero-shot, DA-DSQA separated groups from sentences (0.83; 0.71 age-matched), scored healthy speakers at 1.88 and patients at 2.16 on its 1–7 scale, and agreed with our index (ρ = 0.57) while depending less on the room (ρ 0.34). Its association with H&amp;Y (0.32; 0.62 reported in its paper over PD + controls) disappeared after controlling for age and sex. Pa-ta-ka lay outside its training domain (≈4.2 for everyone; AUROC 0.54) but still tracked UPDRS beyond age (partial ρ 0.33). NeuroVoz was one of its external evaluation sets, so some indirect tuning cannot be excluded.</p>
+
+<h3 id="4-8-tracking-longitudinal-check-and-cali">4.8 Tracking: longitudinal check and calibration</h3>
+<p><b>UCI Telemonitoring (sustained vowels).</b> No feature tracked within-subject motor UPDRS (|r| ≤ 0.08). A leave-one-subject-out drift score did not anticipate 6-month change (ρ = −0.23, p = 0.14). With the app's rule, alerts fired in 12% of subjects who worsened by at least 3 points and 24% of stable subjects, against a 7.5% rate under the circular-shift null. Sustained vowels, the weakest task cross-sectionally, cannot track progression; no public longitudinal corpus with read sentences exists to test our tasks.</p>
+
+<p class="tcap"><b>Table 9.</b> Calibration of the alert rule by simulation (90 days; 300 simulations per cell).</p>
+<table>
+<thead><tr><th>Rule</th><th class="n">False alarm (no drift)</th><th class="n">Detection of +1.5 SD drift over 90 days</th><th class="n">Median alert week</th></tr></thead>
+<tbody>
+<tr><td>z ≥ 1.0 for 2 weeks</td><td class="n">15.7%</td><td class="n">69.7%</td><td class="n">5</td></tr>
+<tr><td>z ≥ 1.0 for 3 weeks</td><td class="n">10.0%</td><td class="n">49.0%</td><td class="n">6</td></tr>
+<tr class="main"><td>z ≥ 1.5 for 3 weeks (chosen)</td><td class="n">2.7%</td><td class="n">28.7%</td><td class="n">7</td></tr>
+<tr><td>z ≥ 2.0 for 3 weeks</td><td class="n">0.7%</td><td class="n">22.3%</td><td class="n">8</td></tr>
+<tr><td>z ≥ 2.0 for 4 weeks</td><td class="n">0.3%</td><td class="n">6.3%</td><td class="n">8</td></tr>
+</tbody>
+</table>
+<p>The chosen rule is deliberately conservative. Figure 5 shows a <b>simulated</b> 90-day timeline built from real recordings of a mild patient (UPDRS 10) mixed with increasing weight towards a severe one (UPDRS 43), with levodopa doses at 08:00, 13:00 and 18:00, wearing-off sessions excluded, and an alert on day 62. The dial drift (Eq. 12) raises the same alert and attributes it to pitch range and pitch variation.</p>
+
+<figure>
+<img src="figures/fig4_tracking_90d.png" alt="Two-panel timeline: daily voice index with baseline band and alert; weekly dial drift.">
+<figcaption><b>Figure 5.</b> Simulated tracking example (not real follow-up data). Top: daily sessions, wearing-off sessions (hollow, excluded), weekly median and the personal baseline band. Bottom: oriented dial drift against the personal baseline.</figcaption>
+</figure>
+
+<h2 id="5-discussion">5. Discussion</h2>
+<h3 id="5-1-principal-findings">5.1 Principal findings</h3>
+<p>A frozen self-supervised speech representation, with the recording channel removed inside each training fold, separates PD from control speech on NeuroVoz (AUROC 0.91), keeps that performance after age matching and inside the only period where both groups were recorded together, and produces an index that follows motor severity beyond age. Trained only on Spanish, it recognises PD in English recorded in a single room (0.79–0.74) and follows clinician-rated speech impairment there. Trained without Spanish, it recognises PD in Spanish (0.83). Together these results indicate a transferable speech marker rather than a corpus artefact.</p>
+<h3 id="5-2-how-reliable-is-the-model">5.2 How reliable is the model?</h3>
+<ul>
+  <li><b>On NeuroVoz,</b> the defensible figure is a range: 0.77 from an independent benchmark on the same speakers [6] to 0.91 here with channel correction (95% CI 0.86–0.96). Uncorrected numbers (0.96) and fine-tuned numbers (0.94–0.96) are inflated by the room. This is consistent with the roughly 0.92 reported with supervised contrastive fine-tuning [4], which did not control the channel.</li>
+  <li><b>Across corpora,</b> the clean external estimate is 0.79 (0.64–0.92) on 37 English speakers: wide intervals, but a lower bound obtained under a change of language, task, microphone and room.</li>
+  <li><b>Severity association</b> is moderate (partial ρ 0.49 with UPDRS; 0.53–0.66 with UPDRS III-18). It is also bounded by the labels themselves: with an inter-rater ICC of 0.47–0.52 for the UPDRS speech item and a score reliability near 0.9, the maximum observable correlation is about √(0.5 · 0.9) ≈ 0.67. The external correlations are therefore close to the ceiling the labels allow.</li>
+  <li><b>Day-to-day reliability</b> is unknown. Within-session reliability is high for the index and for pitch dials, but no data on repeated days were available. The alert thresholds rest on simulated noise.</li>
+</ul>
+<h3 id="5-3-how-far-can-this-approach-go">5.3 How far can this approach go?</h3>
+<ul>
+  <li><b>Model capacity is not the bottleneck.</b> A larger encoder adds about 0.04 AUROC; layer selection and fusion add nothing; fine-tuning mostly adds room dependence.</li>
+  <li><b>The in-domain ceiling bounds what more data from the same set-up can give.</b> A probe trained inside MDVR-KCL reaches 0.92, against 0.79 transferred. A model trained on diverse corpora with controlled age should approach the low 0.90s on unseen rooms.</li>
+  <li><b>For severity,</b> the label-reliability bound (≈0.67) limits correlations with clinician speech ratings. Larger gains require better targets (averaged multi-rater scores, intelligibility measures) and within-person change, where a person's own baseline removes between-speaker variation.</li>
+  <li><b>For tracking,</b> the decisive unknown is within-person variability on a phone at home. If day-to-day noise is comparable to the simulated level, the rule detects a drift of 1.5 SD in about 7 weeks with roughly 3% false alarms per 90 days.</li>
+</ul>
+<h3 id="5-4-limitations">5.4 Limitations</h3>
+<ul>
+  <li><b>Cross-sectional data.</b> NeuroVoz, MDVR-KCL and ItalianPVS are cross-sectional, so associations with severity are not evidence of within-person tracking. The 90-day timeline is simulated, and UCI only has sustained vowels with interpolated UPDRS.</li>
+  <li><b>Partial channel correction.</b> The correction is linear and based on nine descriptors, so non-linear channel effects may remain. ItalianPVS shares a recording confound, and MDVR-KCL lacks ages.</li>
+  <li><b>Small samples.</b> 46 patients with UPDRS; 7 patients in the shared window; 37 speakers in London.</li>
+  <li><b>DA-DSQA may be indirectly tuned on NeuroVoz.</b> NeuroVoz was one of its evaluation sets.</li>
+  <li><b>Unvalidated tracking parameters.</b> The 4-hour wearing-off window and the dial weights come from the literature and convention, not from data.</li>
+  <li><b>Licensing.</b> NeuroVoz is non-commercial (CC BY-NC-ND); any product would require its own data or openly licensed corpora.</li>
+</ul>
+<h3 id="5-5-regulatory-framing">5.5 Regulatory framing</h3>
+<p>No voice-only system currently holds FDA clearance or CE marking for monitoring PD progression. Under the FDA General Wellness guidance (January 2026) [22], a consumer product may display trends and personal baselines but its alerts may not name a disease; monitoring PD explicitly would be software as a medical device (De Novo in the US, likely Class IIa under EU MDR). Within clinical trials, the system can be used as an investigational digital health technology. Our interface wording follows these constraints ("sustained drift from your baseline; discuss with your neurologist").</p>
+
+<h2 id="6-future-work">6. Future work</h2>
+<ol>
+  <li><b>Longitudinal pilot.</b> Daily 30-second sessions (two sentences and pa-ta-ka) on patients' own phones for at least 3 months, with dose times, self-reported ON/OFF state and dyskinesia, plus clinic UPDRS at start and end. Primary outcomes: within-person test–retest variability per task and dial, MDC from real data, and recalibrated alert thresholds.</li>
+  <li><b>Controlled external data.</b> Apply for PC-GITA (with UPDRS and H&amp;Y, including recordings in real clinical conditions) and EWA-DB; collect patients and controls in the same room and period.</li>
+  <li><b>Age-controlled multi-corpus training,</b> which requires age for every speaker, to keep the cross-lingual gains without the age shortcut.</li>
+  <li><b>Channel-robust fine-tuning:</b> room-impulse-response and noise augmentation and orthogonal projection of the channel subspace on the embeddings, accepted only if silence and channel controls stay near chance.</li>
+  <li><b>Per-task baselines and dial-level alerts,</b> with weights estimated from repeated-measures data rather than set from the literature.</li>
+</ol>
+
+<h2 id="7-conclusion">7. Conclusion</h2>
+<p>NeuroVoz contains a strong recording shortcut that inflates naive accuracy. Removing it inside each training fold yields a speech index that separates Parkinson's from control voices (AUROC 0.91), follows motor severity beyond age, and transfers across languages and recording set-ups without retraining (0.79 in a single-room English corpus; 0.83 on Spanish from a model trained without Spanish). Building on that index, a personal-baseline rule with medication-aware filtering and 3-week persistence provides a conservative way to flag sustained change between visits. The next step is not a larger model but longitudinal home data to validate the tracking itself.</p>
+
+<h2 id="data-code-and-ethics">Data, code and ethics</h2>
+<p class="small">All analyses are reproducible from the project repository (<code>ml/src</code>): folds (<code>make_folds.py</code>), features (<code>extract_egemaps.py</code>, <code>extract_channel.py</code>, <code>extract_ssl.py</code>), confound analysis (<code>confound_analysis.py</code>, <code>hygiene_analysis.py</code>), severity and dials (<code>rank_dials.py</code>, <code>severity_analysis.py</code>), improvements (<code>improve_models.py</code>, <code>improve_layers.py</code>, <code>finetune_ssl.py</code>), external validation (<code>external_mdvr.py</code>, <code>external_italian.py</code>, <code>multi_corpus.py</code>), tracking (<code>tracking.py</code>, <code>calibrate_alerts.py</code>, <code>uci_tracking.py</code>). Unit tests cover fold leakage, silence extraction, ICC, age matching, the tracking rule, the supervised contrastive loss and the inner validation split. No new human data were collected. Third-party corpora were used under their licences. ItalianPVS folder names contain real names, so speakers were anonymized before processing. GPU work on Modal used private storage that was deleted after the analyses. The system is a research prototype and not a medical device.</p>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+  <li>Mendes-Laureano J, et al. NeuroVoz: a Castillian Spanish corpus of parkinsonian speech. <i>Scientific Data</i> 11, 1367 (2024).</li>
+  <li>Jouaiti M, Ma N. All I hear is noise: investigating Clever Hans effects in clinical speech datasets. IEEE SLT 2026; arXiv:2609.21080.</li>
+  <li>La Quatra M, et al. Exploiting foundation models and speech enhancement for Parkinson's disease detection from speech in real-world operative conditions. <i>Proc. Interspeech 2024</i>, 1405–1409.</li>
+  <li>Malekroodi et al. Speech-based Parkinson's detection with pre-trained self-supervised models and supervised contrastive learning. <i>Bioengineering</i> 12(7):728 (2025).</li>
+  <li>Something from nothing: data augmentation for robust severity level estimation of dysarthric speech (DA-DSQA). arXiv:2603.15988 (2026); model huggingface.co/jaesungbae/da-dsqa.</li>
+  <li>A benchmark for early-stage Parkinson's disease detection from speech. arXiv:2605.14066 (2026).</li>
+  <li>Tsanas A, Little MA, McSharry PE, Ramig LO. Accurate telemonitoring of Parkinson's disease progression by noninvasive speech tests. <i>IEEE Trans Biomed Eng</i> 57(4):884–893 (2010).</li>
+  <li>Jaeger H, Trivedi D, Stadtschnitzer M. Mobile Device Voice Recordings at King's College London (MDVR-KCL) from both early and advanced Parkinson's disease patients and healthy controls. Zenodo (2019), doi:10.5281/zenodo.2867216.</li>
+  <li>Dimauro G, Di Nicola V, Bevilacqua V, Caivano D, Girardi F. Assessment of speech intelligibility in Parkinson's disease using a speech-to-text system. <i>IEEE Access</i> 5:22199–22208 (2017).</li>
+  <li>Chen S, et al. WavLM: large-scale self-supervised pre-training for full stack speech processing. <i>IEEE J Sel Top Signal Process</i> 16(6):1505–1518 (2022).</li>
+  <li>Hsu W-N, et al. HuBERT: self-supervised speech representation learning by masked prediction of hidden units. <i>IEEE/ACM Trans Audio Speech Lang Process</i> 29:3451–3460 (2021).</li>
+  <li>Radford A, et al. Robust speech recognition via large-scale weak supervision. <i>ICML</i> (2023).</li>
+  <li>Eyben F, et al. The Geneva Minimalistic Acoustic Parameter Set (GeMAPS) for voice research and affective computing. <i>IEEE Trans Affect Comput</i> 7(2):190–202 (2016).</li>
+  <li>Eyben F, Wöllmer M, Schuller B. openSMILE: the Munich versatile and fast open-source audio feature extractor. <i>ACM Multimedia</i> (2010).</li>
+  <li>Khosla P, et al. Supervised contrastive learning. <i>NeurIPS</i> (2020).</li>
+  <li>Nakatani T, et al. Speech dereverberation based on variance-normalized delayed linear prediction. <i>IEEE Trans Audio Speech Lang Process</i> 18(7):1717–1731 (2010).</li>
+  <li>Sainburg T, Thielk M, Gentner TQ. Finding, visualizing, and quantifying latent structure across diverse animal vocal repertoires. <i>PLoS Comput Biol</i> 16(10):e1008228 (2020).</li>
+  <li>Benjamini Y, Hochberg Y. Controlling the false discovery rate. <i>J R Stat Soc B</i> 57:289–300 (1995).</li>
+  <li>Sen PK. Estimates of the regression coefficient based on Kendall's tau. <i>J Am Stat Assoc</i> 63:1379–1389 (1968).</li>
+  <li>Shrout PE, Fleiss JL. Intraclass correlations: uses in assessing rater reliability. <i>Psychol Bull</i> 86:420–428 (1979).</li>
+  <li>Evaluating pretrained speech embedding systems for dysarthria detection across corpora (NeuroVoz ↔ EWA-DB). arXiv:2509.19946 (2025).</li>
+  <li>U.S. Food and Drug Administration. General Wellness: Policy for Low Risk Devices. Guidance, reissued 6 January 2026.</li>
+  <li>WATCH-PD smartphone speech analysis: reading pitch range in early PD (as reported in the WATCH-PD cohort publications).</li>
+  <li>PASADENA phase 2 trial (Roche), exploratory smartphone speech metrics (vowel space area, vowel articulation index).</li>
+  <li>mPower smartphone study: test–retest reliability of voice features (JMIR, 2021).</li>
+  <li>Stegmann GM, et al. Repeatability of commonly used speech and language features for clinical applications. <i>Digit Biomark</i> (2020).</li>
+  <li>Meta-analytic evidence on acute levodopa effects on voice (F0, F0 variability, intensity slope), as summarized in the project's literature review.</li>
+</ol>
+
+</body>
+</html>

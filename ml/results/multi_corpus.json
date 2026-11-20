@@ -1,0 +1,114 @@
+{
+  "base|LOCO test=neurovoz": {
+    "neurovoz_auroc": [
+      0.8318,
+      0.7484,
+      0.9043
+    ],
+    "neurovoz_prho_updrs": [
+      0.4263,
+      0.0039
+    ]
+  },
+  "base|LOCO test=mdvr": {
+    "mdvr_auroc": [
+      0.8155,
+      0.6735,
+      0.9367
+    ],
+    "mdvr_rho_iii18_in_pd": [
+      0.567,
+      0.022
+    ]
+  },
+  "base|LOCO test=italian": {
+    "italian_auroc_pd_vs_ehc": [
+      0.9269,
+      0.842,
+      0.9881
+    ],
+    "italian_auroc_ehc_vs_yhc": 0.8091
+  },
+  "base|pooled 5-fold": {
+    "neurovoz_auroc": [
+      0.9378,
+      0.8906,
+      0.9778
+    ],
+    "neurovoz_prho_updrs": [
+      0.4922,
+      0.0007
+    ],
+    "mdvr_auroc": [
+      0.9494,
+      0.8727,
+      1.0
+    ],
+    "mdvr_rho_iii18_in_pd": [
+      0.5764,
+      0.0194
+    ],
+    "italian_auroc_pd_vs_ehc": [
+      0.9334,
+      0.8576,
+      0.9917
+    ],
+    "italian_auroc_ehc_vs_yhc": 0.8061
+  },
+  "large|LOCO test=neurovoz": {
+    "neurovoz_auroc": [
+      0.9,
+      0.8396,
+      0.9492
+    ],
+    "neurovoz_prho_updrs": [
+      0.3312,
+      0.0281
+    ]
+  },
+  "large|LOCO test=mdvr": {
+    "mdvr_auroc": [
+      0.7768,
+      0.609,
+      0.9182
+    ],
+    "mdvr_rho_iii18_in_pd": [
+      0.3692,
+      0.1593
+    ]
+  },
+  "large|LOCO test=italian": {
+    "italian_auroc_pd_vs_ehc": [
+      0.9692,
+      0.9179,
+      0.9968
+    ],
+    "italian_auroc_ehc_vs_yhc": 0.4394
+  },
+  "large|pooled 5-fold": {
+    "neurovoz_auroc": [
+      0.9654,
+      0.9281,
+      0.9948
+    ],
+    "neurovoz_prho_updrs": [
+      0.4125,
+      0.0054
+    ],
+    "mdvr_auroc": [
+      0.9613,
+      0.8947,
+      1.0
+    ],
+    "mdvr_rho_iii18_in_pd": [
+      0.4362,
+      0.0912
+    ],
+    "italian_auroc_pd_vs_ehc": [
+      0.9334,
+      0.85,
+      0.9945
+    ],
+    "italian_auroc_ehc_vs_yhc": 0.6212
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "age_only": {
+    "n_patients": 106,
+    "auroc": 0.6772872908508366,
+    "ci_low": 0.5724951769502561,
+    "ci_high": 0.7809391651738204,
+    "auroc_age_matched": 0.4796712802768166,
+    "matched_ci": [
+      0.3415526104235781,
+      0.6219734082586068
+    ],
+    "n_matched": 68
+  },
+  "speech|sentences|logreg": {
+    "n_patients": 107,
+    "auroc": 0.8951048951048951,
+    "ci_low": 0.8307688247712879,
+    "ci_high": 0.9518898350652112,
+    "auroc_age_matched": 0.8253119429590018,
+    "matched_ci": [
+      0.7186224934612031,
+      0.9157811059907834
+    ],
+    "n_matched": 67
+  },
+  "speech|sentences|xgb": {
+    "n_patients": 107,
+    "auroc": 0.8730769230769231,
+    "ci_low": 0.8056136095836606,
+    "ci_high": 0.9352294523072386,
+    "auroc_age_matched": 0.8074866310160428,
+    "matched_ci": [
+      0.70071229371514,
+      0.8996505376344086
+    ],
+    "n_matched": 67
+  },
+  "speech|pataka|logreg": {
+    "n_patients": 99,
+    "auroc": 0.8702040816326531,
+    "ci_low": 0.7958246419135029,
+    "ci_high": 0.9346942992072862,
+    "auroc_age_matched": 0.811491935483871,
+    "matched_ci": [
+      0.6898989898989899,
+      0.9127789046653143
+    ],
+    "n_matched": 63
+  },
+  "speech|pataka|xgb": {
+    "n_patients": 99,
+    "auroc": 0.8685714285714284,
+    "ci_low": 0.7963223706149125,
+    "ci_high": 0.9305671768707482,
+    "auroc_age_matched": 0.8618951612903226,
+    "matched_ci": [
+      0.7595875420875421,
+      0.9371196754563894
+    ],
+    "n_matched": 63
+  },
+  "speech|sentences+pataka|logreg": {
+    "n_patients": 107,
+    "auroc": 0.8923076923076922,
+    "ci_low": 0.8266578947368421,
+    "ci_high": 0.949497071555895,
+    "auroc_age_matched": 0.8155080213903744,
+    "matched_ci": [
+      0.7085580357142857,
+      0.9108734402852049
+    ],
+    "n_matched": 67
+  },
+  "speech|sentences+pataka|xgb": {
+    "n_patients": 107,
+    "auroc": 0.8727272727272727,
+    "ci_low": 0.8049583002680162,
+    "ci_high": 0.9341858546353551,
+    "auroc_age_matched": 0.8057040998217468,
+    "matched_ci": [
+      0.7007272270303349,
+      0.8977585817524841
+    ],
+    "n_matched": 67
+  },
+  "speech|vowels|logreg": {
+    "n_patients": 107,
+    "auroc": 0.7629370629370629,
+    "ci_low": 0.6740297418422905,
+    "ci_high": 0.8504551270193612,
+    "auroc_age_matched": 0.6283422459893049,
+    "matched_ci": [
+      0.4882691381220793,
+      0.762554266574665
+    ],
+    "n_matched": 67
+  },
+  "speech|vowels|xgb": {
+    "n_patients": 107,
+    "auroc": 0.712937062937063,
+    "ci_low": 0.6124939818877674,
+    "ci_high": 0.8098257961079168,
+    "auroc_age_matched": 0.5294117647058824,
+    "matched_ci": [
+      0.39125873199402617,
+      0.66846027479092
+    ],
+    "n_matched": 67
+  },
+  "silence|sentences+pataka|logreg": {
+    "n_patients": 86,
+    "auroc": 0.8293478260869565,
+    "ci_low": 0.7386852621483376,
+    "ci_high": 0.9149075203252033,
+    "auroc_age_matched": 0.7642857142857142,
+    "matched_ci": [
+      0.619932551319648,
+      0.8854503746578724
+    ],
+    "n_matched": 53
+  },
+  "silence|sentences+pataka|xgb": {
+    "n_patients": 86,
+    "auroc": 0.8521739130434782,
+    "ci_low": 0.7694444061408346,
+    "ci_high": 0.927633724256293,
+    "auroc_age_matched": 0.7957142857142857,
+    "matched_ci": [
+      0.6566070089955023,
+      0.9102898550724636
+    ],
+    "n_matched": 53
+  }
+}

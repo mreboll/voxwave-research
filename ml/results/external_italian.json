@@ -1,0 +1,578 @@
+{
+  "lectura": {
+    "PD_vs_EHC": {
+      "n_pos": 27,
+      "n_neg": 21,
+      "p_main": [
+        0.933,
+        0.848,
+        0.993
+      ],
+      "p_wavlm_large_resid": [
+        0.898,
+        0.789,
+        0.982
+      ],
+      "p_wavlm_raw": [
+        0.762,
+        0.617,
+        0.887
+      ],
+      "p_egemaps_resid": [
+        0.58,
+        0.414,
+        0.744
+      ],
+      "p_in_dataset_channel": [
+        0.981,
+        0.932,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        0.963,
+        0.875,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.020238387488645558,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.08385114538216773,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.006393509288389981,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.9125367002700373
+    },
+    "PD16k_vs_EHC": {
+      "n_pos": 17,
+      "n_neg": 21,
+      "p_main": [
+        0.958,
+        0.884,
+        1.0
+      ],
+      "p_wavlm_large_resid": [
+        0.916,
+        0.81,
+        0.989
+      ],
+      "p_wavlm_raw": [
+        0.832,
+        0.695,
+        0.947
+      ],
+      "p_egemaps_resid": [
+        0.636,
+        0.445,
+        0.81
+      ],
+      "p_in_dataset_channel": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.26763690429240916,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.2695044520526437,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.2702623133507148,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.26778537959614096
+    },
+    "EHC_vs_YHC": {
+      "n_pos": 21,
+      "n_neg": 15,
+      "p_main": [
+        0.273,
+        0.12,
+        0.458
+      ],
+      "p_wavlm_large_resid": [
+        0.238,
+        0.097,
+        0.418
+      ],
+      "p_wavlm_raw": [
+        0.987,
+        0.948,
+        1.0
+      ],
+      "p_egemaps_resid": [
+        0.616,
+        0.415,
+        0.81
+      ]
+    },
+    "PD_vs_YHC": {
+      "n_pos": 27,
+      "n_neg": 15,
+      "p_main": [
+        0.899,
+        0.788,
+        0.977
+      ],
+      "p_wavlm_large_resid": [
+        0.862,
+        0.735,
+        0.955
+      ],
+      "p_wavlm_raw": [
+        0.998,
+        0.986,
+        1.0
+      ],
+      "p_egemaps_resid": [
+        0.677,
+        0.492,
+        0.853
+      ],
+      "p_in_dataset_channel": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.9360279068965999,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.9275601646347109,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.9292792843602422,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.8955345776568352
+    }
+  },
+  "frases": {
+    "PD_vs_EHC": {
+      "n_pos": 23,
+      "n_neg": 20,
+      "p_main": [
+        0.928,
+        0.835,
+        0.994
+      ],
+      "p_wavlm_large_resid": [
+        0.911,
+        0.807,
+        0.992
+      ],
+      "p_wavlm_raw": [
+        0.659,
+        0.488,
+        0.817
+      ],
+      "p_egemaps_resid": [
+        0.511,
+        0.329,
+        0.695
+      ],
+      "p_in_dataset_channel": [
+        0.983,
+        0.946,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.0001982902809467104,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.00019750151694905243,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.00019799096656757153,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.4256389919055549
+    },
+    "PD16k_vs_EHC": {
+      "n_pos": 14,
+      "n_neg": 20,
+      "p_main": [
+        0.957,
+        0.879,
+        1.0
+      ],
+      "p_wavlm_large_resid": [
+        0.95,
+        0.871,
+        1.0
+      ],
+      "p_wavlm_raw": [
+        0.754,
+        0.568,
+        0.909
+      ],
+      "p_egemaps_resid": [
+        0.582,
+        0.377,
+        0.768
+      ],
+      "p_in_dataset_channel": [
+        0.964,
+        0.888,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.010858586673871783,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.02387189425423233,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.054069671748004255,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.07990086926037707
+    }
+  },
+  "palabras": {
+    "PD_vs_EHC": {
+      "n_pos": 20,
+      "n_neg": 22,
+      "p_main": [
+        0.932,
+        0.848,
+        0.993
+      ],
+      "p_wavlm_large_resid": [
+        0.873,
+        0.753,
+        0.97
+      ],
+      "p_wavlm_raw": [
+        0.684,
+        0.52,
+        0.85
+      ],
+      "p_egemaps_resid": [
+        0.591,
+        0.415,
+        0.766
+      ],
+      "p_in_dataset_channel": [
+        0.991,
+        0.965,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.036212373311008884,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.025199095780543183,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.1143927716286826,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.7824460410824757
+    },
+    "PD16k_vs_EHC": {
+      "n_pos": 12,
+      "n_neg": 22,
+      "p_main": [
+        0.973,
+        0.913,
+        1.0
+      ],
+      "p_wavlm_large_resid": [
+        0.913,
+        0.795,
+        1.0
+      ],
+      "p_wavlm_raw": [
+        0.784,
+        0.617,
+        0.916
+      ],
+      "p_egemaps_resid": [
+        0.693,
+        0.505,
+        0.871
+      ],
+      "p_in_dataset_channel": [
+        0.989,
+        0.953,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.0027074992630031556,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.00308314857049278,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.0028216110002921672,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.44178691252736857
+    },
+    "EHC_vs_YHC": {
+      "n_pos": 22,
+      "n_neg": 15,
+      "p_main": [
+        0.348,
+        0.178,
+        0.532
+      ],
+      "p_wavlm_large_resid": [
+        0.233,
+        0.091,
+        0.399
+      ],
+      "p_wavlm_raw": [
+        0.97,
+        0.9,
+        1.0
+      ],
+      "p_egemaps_resid": [
+        0.691,
+        0.509,
+        0.856
+      ]
+    },
+    "PD_vs_YHC": {
+      "n_pos": 20,
+      "n_neg": 15,
+      "p_main": [
+        0.92,
+        0.81,
+        0.993
+      ],
+      "p_wavlm_large_resid": [
+        0.83,
+        0.67,
+        0.973
+      ],
+      "p_wavlm_raw": [
+        0.993,
+        0.97,
+        1.0
+      ],
+      "p_egemaps_resid": [
+        0.787,
+        0.617,
+        0.929
+      ],
+      "p_in_dataset_channel": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.928241312739239,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.9296312856902841,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.9341297897654941,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.9009247274112225
+    }
+  },
+  "ddk": {
+    "PD_vs_EHC": {
+      "n_pos": 28,
+      "n_neg": 21,
+      "p_main": [
+        0.629,
+        0.465,
+        0.795
+      ],
+      "p_wavlm_large_resid": [
+        0.696,
+        0.536,
+        0.851
+      ],
+      "p_wavlm_raw": [
+        0.35,
+        0.206,
+        0.508
+      ],
+      "p_egemaps_resid": [
+        0.495,
+        0.33,
+        0.665
+      ],
+      "p_in_dataset_channel": [
+        0.25,
+        0.1,
+        0.414
+      ],
+      "p_in_dataset_wavlm": [
+        0.986,
+        0.949,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.4414284242495733,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.00043283108182796563,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.05283761773790196,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.5907901432839217
+    },
+    "PD16k_vs_EHC": {
+      "n_pos": 18,
+      "n_neg": 21,
+      "p_main": [
+        0.865,
+        0.734,
+        0.968
+      ],
+      "p_wavlm_large_resid": [
+        0.947,
+        0.866,
+        0.997
+      ],
+      "p_wavlm_raw": [
+        0.331,
+        0.164,
+        0.516
+      ],
+      "p_egemaps_resid": [
+        0.643,
+        0.457,
+        0.821
+      ],
+      "p_in_dataset_channel": [
+        0.892,
+        0.779,
+        0.97
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.06433773535488763,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.006643513043128831,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.7967914728433886,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.358982699299924
+    }
+  },
+  "habla_todo": {
+    "PD_vs_EHC": {
+      "n_pos": 28,
+      "n_neg": 22,
+      "p_main": [
+        0.927,
+        0.838,
+        0.987
+      ],
+      "p_wavlm_large_resid": [
+        0.909,
+        0.802,
+        0.986
+      ],
+      "p_wavlm_raw": [
+        0.755,
+        0.602,
+        0.88
+      ],
+      "p_egemaps_resid": [
+        0.565,
+        0.394,
+        0.742
+      ],
+      "p_in_dataset_channel": [
+        0.904,
+        0.8,
+        0.979
+      ],
+      "p_in_dataset_wavlm": [
+        0.966,
+        0.889,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 3.0566663701761806e-07,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 8.358031491517939e-07,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.06833577949786478,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.273309589202872
+    },
+    "PD16k_vs_EHC": {
+      "n_pos": 18,
+      "n_neg": 22,
+      "p_main": [
+        0.962,
+        0.896,
+        1.0
+      ],
+      "p_wavlm_large_resid": [
+        0.934,
+        0.848,
+        0.995
+      ],
+      "p_wavlm_raw": [
+        0.821,
+        0.679,
+        0.94
+      ],
+      "p_egemaps_resid": [
+        0.624,
+        0.445,
+        0.805
+      ],
+      "p_in_dataset_channel": [
+        0.99,
+        0.96,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.035753879906997584,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.04649353115768875,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.0844931482268664,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.0013233073338606862
+    },
+    "EHC_vs_YHC": {
+      "n_pos": 22,
+      "n_neg": 15,
+      "p_main": [
+        0.342,
+        0.173,
+        0.529
+      ],
+      "p_wavlm_large_resid": [
+        0.252,
+        0.103,
+        0.42
+      ],
+      "p_wavlm_raw": [
+        0.985,
+        0.942,
+        1.0
+      ],
+      "p_egemaps_resid": [
+        0.694,
+        0.491,
+        0.869
+      ]
+    },
+    "PD_vs_YHC": {
+      "n_pos": 28,
+      "n_neg": 15,
+      "p_main": [
+        0.94,
+        0.849,
+        1.0
+      ],
+      "p_wavlm_large_resid": [
+        0.902,
+        0.792,
+        0.978
+      ],
+      "p_wavlm_raw": [
+        0.998,
+        0.986,
+        1.0
+      ],
+      "p_egemaps_resid": [
+        0.712,
+        0.517,
+        0.881
+      ],
+      "p_in_dataset_channel": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_in_dataset_wavlm": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "p_adds_beyond_channel_p_main": 0.8056974543398856,
+      "p_adds_beyond_channel_p_wavlm_large_resid": 0.9194540724867928,
+      "p_adds_beyond_channel_p_wavlm_raw": 0.7985336256687858,
+      "p_adds_beyond_channel_p_egemaps_resid": 0.7808256553079489
+    }
+  }
+}

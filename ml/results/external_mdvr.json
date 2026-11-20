@@ -1,0 +1,288 @@
+{
+  "lectura": {
+    "n_pd": 16,
+    "n_hc": 21,
+    "windows_median": 22.0,
+    "p_main": {
+      "auroc": 0.792,
+      "ci": [
+        0.636,
+        0.923
+      ],
+      "rho_hy": [
+        0.557,
+        0.0003
+      ],
+      "rho_updrs_iii18": [
+        0.575,
+        0.0002
+      ],
+      "rho_updrs_ii5": [
+        0.605,
+        0.0001
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.53,
+        0.0349
+      ]
+    },
+    "p_wavlm_raw": {
+      "auroc": 0.774,
+      "ci": [
+        0.606,
+        0.909
+      ],
+      "rho_hy": [
+        0.543,
+        0.0005
+      ],
+      "rho_updrs_iii18": [
+        0.541,
+        0.0005
+      ],
+      "rho_updrs_ii5": [
+        0.612,
+        0.0001
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.528,
+        0.0355
+      ]
+    },
+    "p_egemaps_resid": {
+      "auroc": 0.688,
+      "ci": [
+        0.5,
+        0.845
+      ],
+      "rho_hy": [
+        0.322,
+        0.0521
+      ],
+      "rho_updrs_iii18": [
+        0.286,
+        0.0861
+      ],
+      "rho_updrs_ii5": [
+        0.317,
+        0.0555
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.143,
+        0.5965
+      ]
+    },
+    "p_wavlm_large_resid": {
+      "auroc": 0.833,
+      "ci": [
+        0.688,
+        0.953
+      ],
+      "rho_hy": [
+        0.663,
+        0.0
+      ],
+      "rho_updrs_iii18": [
+        0.673,
+        0.0
+      ],
+      "rho_updrs_ii5": [
+        0.646,
+        0.0
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.637,
+        0.0079
+      ]
+    },
+    "p_in_mdvr_wavlm": {
+      "auroc": 0.92,
+      "ci": [
+        0.803,
+        1.0
+      ],
+      "rho_hy": [
+        0.787,
+        0.0
+      ],
+      "rho_updrs_iii18": [
+        0.681,
+        0.0
+      ],
+      "rho_updrs_ii5": [
+        0.589,
+        0.0001
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.788,
+        0.0003
+      ]
+    },
+    "p_in_mdvr_channel": {
+      "auroc": 0.089,
+      "ci": [
+        0.0,
+        0.239
+      ],
+      "rho_hy": [
+        -0.639,
+        0.0
+      ],
+      "rho_updrs_iii18": [
+        -0.312,
+        0.0597
+      ],
+      "rho_updrs_ii5": [
+        -0.255,
+        0.1275
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.075,
+        0.7831
+      ]
+    }
+  },
+  "dialogo": {
+    "n_pd": 15,
+    "n_hc": 19,
+    "windows_median": 12.5,
+    "p_main": {
+      "auroc": 0.744,
+      "ci": [
+        0.564,
+        0.896
+      ],
+      "rho_hy": [
+        0.522,
+        0.0015
+      ],
+      "rho_updrs_iii18": [
+        0.59,
+        0.0002
+      ],
+      "rho_updrs_ii5": [
+        0.583,
+        0.0003
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.661,
+        0.0073
+      ]
+    },
+    "p_wavlm_raw": {
+      "auroc": 0.705,
+      "ci": [
+        0.516,
+        0.862
+      ],
+      "rho_hy": [
+        0.416,
+        0.0145
+      ],
+      "rho_updrs_iii18": [
+        0.36,
+        0.0363
+      ],
+      "rho_updrs_ii5": [
+        0.417,
+        0.0142
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.357,
+        0.1921
+      ]
+    },
+    "p_egemaps_resid": {
+      "auroc": 0.751,
+      "ci": [
+        0.569,
+        0.901
+      ],
+      "rho_hy": [
+        0.461,
+        0.0061
+      ],
+      "rho_updrs_iii18": [
+        0.285,
+        0.1025
+      ],
+      "rho_updrs_ii5": [
+        0.297,
+        0.0879
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.104,
+        0.7135
+      ]
+    },
+    "p_wavlm_large_resid": {
+      "auroc": 0.747,
+      "ci": [
+        0.554,
+        0.913
+      ],
+      "rho_hy": [
+        0.55,
+        0.0007
+      ],
+      "rho_updrs_iii18": [
+        0.66,
+        0.0
+      ],
+      "rho_updrs_ii5": [
+        0.663,
+        0.0
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.713,
+        0.0028
+      ]
+    },
+    "p_in_mdvr_wavlm": {
+      "auroc": 0.916,
+      "ci": [
+        0.791,
+        0.997
+      ],
+      "rho_hy": [
+        0.756,
+        0.0
+      ],
+      "rho_updrs_iii18": [
+        0.623,
+        0.0001
+      ],
+      "rho_updrs_ii5": [
+        0.53,
+        0.0013
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.391,
+        0.1495
+      ]
+    },
+    "p_in_mdvr_channel": {
+      "auroc": 0.168,
+      "ci": [
+        0.035,
+        0.336
+      ],
+      "rho_hy": [
+        -0.45,
+        0.0076
+      ],
+      "rho_updrs_iii18": [
+        0.01,
+        0.9538
+      ],
+      "rho_updrs_ii5": [
+        -0.04,
+        0.823
+      ],
+      "rho_updrs_iii18_within_pd": [
+        0.753,
+        0.0012
+      ]
+    }
+  }
+}

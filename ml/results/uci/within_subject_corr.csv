@@ -1,0 +1,17 @@
+feature,r_within
+RPDE,-0.0807
+Shimmer:APQ11,-0.0726
+Shimmer,-0.0683
+HNR,0.0640
+DFA,-0.0639
+Shimmer(dB),-0.0611
+Shimmer:APQ5,-0.0601
+Shimmer:DDA,-0.0510
+Shimmer:APQ3,-0.0510
+NHR,-0.0176
+Jitter(%),-0.0162
+Jitter:DDP,-0.0124
+Jitter:RAP,-0.0122
+Jitter:PPQ5,-0.0111
+Jitter(Abs),-0.0026
+PPE,0.0021
