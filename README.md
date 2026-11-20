@@ -47,8 +47,7 @@ voxwave-research/
 ├── docs/
 │   ├── project/            contexto del proyecto VoxWave y plan inicial del equipo
 │   ├── research/           investigaciones bibliográficas hechas con Gemini y ChatGPT
-│   ├── guides/             cómo conseguir cada dataset
-│   └── presentation/       material de apoyo para la presentación
+│   └── guides/             cómo conseguir cada dataset
 ├── data/                   NeuroVoz (no incluido; ver data/README.md)
 └── data_external/          MDVR-KCL, ItalianPVS, UCI (no incluidos)
 ```
